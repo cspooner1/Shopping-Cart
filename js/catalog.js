@@ -42,7 +42,30 @@ function addSelectedItemToCart() {
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
+  let selectHTML = document.getElementById("items")
+  let selectedProductName = innerHTML.value
+  let inputHTML = document.getElementById("quantity")
+  let selectedProductQuantity = inputHTML.value
   // TODO: Add a new element to the cartContents div with that information
+  let cartDiv = document.getElementById("cartContents");
+  let product = undefined;
+  for(let i = 0; i < state.allProducts.length; i++){
+    if(state.allProducts[i].name === selectedProductName){
+      product = state.allProducts[i]
+    }
+  }
+  let previewDiv = document.createElement("div");
+  let nameHTML = document.createElement("h3");
+  quantityHTML.innerHTML = selectedProductQuantity;
+  nameHTML.innerHTML = product.nameHTML;
+  previewDiv.append(nameHTML);
+  previewDiv.append(quantityHTML);
+  cartDiv.append(previewDiv);
+
+  let images = document.createElement('img');
+  images.src = product.filePath
+  cartDiv.append(images);
+
 }
 
 // Set up the "submit" event listener on the form.
